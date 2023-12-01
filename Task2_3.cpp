@@ -51,26 +51,35 @@ int main()
 
     printf("Enter the number of start vertex (positive integer [0; %d]): ", num);
     scanf("%d", &v);
+    printf("\t# BFS distance\n");
 
     // <---------- ! ---------->
+    unsigned int start_time = clock();
     BFSD(graph, DIST, size, v);
+    unsigned int end_time = clock();
+    unsigned int search_time = end_time - start_time;
     // <---------- ! ---------->
     printf("\n");
     for(i = 0; i < size; i++)
         printf("%d: %d\n", i, DIST[i]);
+    cout << "runtime = " << search_time / 1000.0;
 
     printf("\n\n");
 
     printf("Enter the number of start vertex (positive integer [0; %d]): ", num);
     scanf("%d", &v);
-
+    printf("\t# DFS distance\n");
     // <---------- ! ---------->
+    start_time = clock();
     DFS(graph, dist, visited, size, v);
+    end_time = clock();
+    search_time = end_time - start_time;
     // <---------- ! ---------->
     printf("\n");
 
     for(i = 0; i < size; i++)
         printf("%d: %d\n", i, dist[i] + 1);
+    cout << "runtime = " << search_time / 1000.0;
 
 
     delete[] visited;
